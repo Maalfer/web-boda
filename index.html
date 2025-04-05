@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación de Boda</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <div class="header-text">
+          <p class="subtitle">Fátima y Mario </p>
+          <h1 class="title">¡Nos Casamos!</h1>
+        </div>
+    </header>
+      
+
+ <section id="cuenta-regresiva">
+    <h2>Cuenta atrás</h2>
+    <p>Faltan:</p>
+    <div id="contador">
+      <span><strong id="dias">0</strong> días</span>
+      <span><strong id="horas">0</strong> h</span>
+      <span><strong id="minutos">0</strong> min</span>
+      <span><strong id="segundos">0</strong> s</span>
+    </div>
+  </section>
+
+  <section id="detalles">
+    <h2>Detalles del Evento</h2>
+    <p><strong>Fecha:</strong> 8 de Agosto, 2026</p>
+    <p><strong>Lugar:</strong> Hacienda de la Llorea, Gijón</p>
+    <p><strong>Hora:</strong> 18:00h</p>
+  </section>
+
+  <section id="galeria">
+    <h2>Nuestros Recuerdos</h2>
+    <div class="fotos">
+      <img src="https://source.unsplash.com/300x200/?wedding,couple" alt="Pareja 1" />
+      <img src="https://source.unsplash.com/301x200/?engagement,love" alt="Pareja 2" />
+      <img src="https://source.unsplash.com/302x200/?wedding,romance" alt="Pareja 3" />
+    </div>
+  </section>
+
+  
+  
+
+  <section id="confirmacion">
+    <h2>¿Vienes a la boda?</h2>
+    <p>Por favor, confirma tu asistencia antes de junio de 2026</p>
+    <a class="btn" href="mailto:elpinguinodemario@gmail.com?subject=Confirmación%20de%20asistencia%20a%20la%20boda">
+      Confirmar asistencia
+    </a>
+  </section>
+
+  <footer>
+    <p>Con todo nuestro cariño,</p>
+    <p><strong>Fátima & Mario</strong></p>
+  </footer>
+
+  <script>
+    function actualizarContador() {
+      const fechaBoda = new Date("2026-08-08T00:00:00").getTime();
+      const ahora = new Date().getTime();
+      const diferencia = fechaBoda - ahora;
+  
+      if (diferencia < 0) {
+        document.getElementById("contador").innerHTML = "¡Ya es el gran día!";
+        return;
+      }
+  
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+  
+      document.getElementById("dias").textContent = dias;
+      document.getElementById("horas").textContent = horas;
+      document.getElementById("minutos").textContent = minutos;
+      document.getElementById("segundos").textContent = segundos;
+    }
+  
+    // Actualizar contador cada segundo
+    setInterval(actualizarContador, 1000);
+    actualizarContador(); // Ejecutar al cargar
+  </script>
+  
+
+  
+</body>
+</html>
