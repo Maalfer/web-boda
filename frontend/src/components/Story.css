@@ -1,0 +1,62 @@
+.section {
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-primary-dark);
+}
+
+.story {
+    background-color: white;
+}
+
+.story-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+.story-content p {
+    margin-bottom: 2rem;
+}
+
+.confirm-btn {
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: transform 0.2s, background-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--color-primary-dark);
+}
+
+/* Modal form specific overrides */
+.rsvp-form-modal {
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 3rem 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .story-content {
+        font-size: 1.1rem;
+    }
+}

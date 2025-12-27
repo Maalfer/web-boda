@@ -1,0 +1,98 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    background-color: var(--color-background);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+.navbar-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary-dark);
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar-links a {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+    color: var(--color-primary-dark);
+}
+
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    /* Reduced gap */
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text);
+    margin: 0;
+    /* Remove margin, rely on gap */
+    transition: 0.4s;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        /* Below navbar */
+        left: -100%;
+        /* Hidden by default */
+        background-color: var(--color-background);
+        opacity: 0;
+        transition: all 0.5s ease;
+        padding: 2rem 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .navbar-links.active {
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .navbar-links li {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+}

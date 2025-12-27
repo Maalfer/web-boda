@@ -1,0 +1,190 @@
+/* Full Screen Envelope Overlay */
+.envelope-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    z-index: 2000;
+    transition: opacity 1.5s ease-out, visibility 1.5s;
+    /* Optional: Add a dark backdrop if the user has a large screen so they focus on the "envelope" feel?
+       Actually, sticking to full screen envelope as requested. */
+}
+
+.envelope-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* The Envelope Container */
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #2c3e32;
+    /* Very dark gap color, almost black-green */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Paper Texture pattern shared by all flaps */
+.texture-bg {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Subtle watercolor paper texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+/* Inner Letter (visible in cracks) */
+.letter {
+    position: absolute;
+    inset: 0;
+    background-color: #fcfcfc;
+    z-index: 0;
+}
+
+/* FLAPS CONFIGURATION */
+/* Flap Base Styles */
+.flap {
+    position: absolute;
+    /* Sage Green Base - Using variable-like approach for consistency */
+    background-color: #556b5e;
+    /* Box shadow inset to simulate paper thickness/edge highlight */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Left Flap */
+.flap-left {
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 100%;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    background-color: #4a5d51;
+    /* Darker shade */
+    z-index: 2;
+}
+
+/* Right Flap */
+.flap-right {
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    background-color: #46594d;
+    /* Darker shade */
+    z-index: 2;
+}
+
+/* Bottom Flap - The main body */
+.flap-bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    /* Covers up to slightly above middle */
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    background-color: #556b5e;
+    /* Main color */
+    z-index: 3;
+    /* Strong shadow to show it sits ON TOP of side flaps */
+    filter: drop-shadow(0 -5px 15px rgba(0, 0, 0, 0.4));
+}
+
+/* Top Flap - The closing lid */
+.flap-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    /* Meets the bottom flap */
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    background-color: #5e7668;
+    /* Slightly lighter as it catches top light */
+    z-index: 4;
+    transform-origin: top;
+    transition: transform 1.2s cubic-bezier(0.45, 0, 0.55, 1);
+
+    /* Strongest shadow */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+/* Subtle highlights on edges using psuedo elements if we could,
+   but clip-path clips them. We rely on background-color differences and filters. */
+
+/* Open Animation */
+.envelope.open .flap-top {
+    transform: rotateX(180deg);
+    z-index: 0;
+    /* Behind everything */
+    opacity: 0;
+    transition: transform 1.2s, opacity 0.5s 0.7s;
+}
+
+/* The Wax Seal */
+.wax-seal {
+    position: absolute;
+    /* Position relative to the screen center, offset to sit on the flap tip */
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    /* Bigger seal */
+    height: 120px;
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.4));
+    border-radius: 50%;
+    /* Ensuring circular mask for image */
+}
+
+/* Animation specifically for the seal to fade out with the overlay?
+   It's inside envelope usually. */
+.envelope.open .wax-seal {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+.envelope:not(.open):hover .wax-seal {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Prompt text */
+.open-prompt {
+    position: absolute;
+    bottom: 15%;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    z-index: 20;
+    pointer-events: none;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}

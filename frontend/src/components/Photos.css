@@ -1,0 +1,123 @@
+/* Photos.css */
+.photos-page {
+    padding: 8rem 2rem 10rem;
+    /* Extra bottom padding for fixed footer */
+    min-height: 100vh;
+    background-color: var(--color-background);
+}
+
+
+.upload-section {
+    background-color: var(--color-primary-light, #FFFDD0);
+    /* Fallback or uses secondary cream */
+    background-color: var(--color-accent);
+    /* Use the cream accent we defined */
+    padding: 3rem 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    /* Softer, larger shadow */
+    max-width: 800px;
+    margin: 0 auto 5rem;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.upload-title {
+    font-family: var(--font-heading);
+    color: var(--color-primary-dark);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.upload-desc {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.file-drop-zone {
+    border: 2px dashed var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: 3rem 2rem;
+    background-color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.file-drop-zone:hover {
+    border-color: var(--color-primary-dark);
+    background-color: #fafafa;
+}
+
+.file-input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.drop-zone-text {
+    pointer-events: none;
+    color: var(--color-text-light);
+}
+
+.gallery-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: var(--font-heading);
+    color: var(--color-primary-dark);
+    font-size: 3rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    /* Larger gap for cleaner look */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    height: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    cursor: pointer;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover .photo-img {
+    transform: scale(1.05);
+    /* Subtle zoom */
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    color: var(--color-text-light);
+    font-style: italic;
+    grid-column: 1 / -1;
+    padding: 3rem;
+}

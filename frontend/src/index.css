@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+
+@font-face {
+  font-family: 'Lovely Girl';
+  src: url('./assets/fonts/LovelyGirl.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Griffiths';
+  src: url('./assets/fonts/Griffiths.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* Color Palette */
+  --color-primary: #A3BC99;
+  /* Lighter Green (Buttons) */
+  --color-primary-dark: #8F9E84;
+  /* Darker Green (Hover) */
+  --color-secondary: #FFFDD0;
+  /* Cream */
+  --color-background: #FFFEF0;
+  /* Very light cream/white */
+  --color-text: #2C3E50;
+  /* Dark Slate */
+  --color-text-light: #586E75;
+  /* Muted Text */
+  --color-accent: #F8F3ED;
+  /* Cream Accent/Background */
+
+  /* Typography */
+  --font-heading: 'Lovely Girl', serif;
+  --font-body: 'Lato', sans-serif;
+  --font-handwriting: 'Griffiths', sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

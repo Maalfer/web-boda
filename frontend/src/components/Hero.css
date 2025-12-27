@@ -1,0 +1,133 @@
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Background with white overlay (0.7 opacity) */
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../assets/fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 6rem 2rem 2rem;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  /* Reduced margin */
+}
+
+.hero-title .amp {
+  color: var(--color-primary-dark);
+  font-style: italic;
+}
+
+.hero-big-date {
+  font-size: 2.5rem;
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.hero-invitation {
+  font-family: var(--font-handwriting);
+  font-size: 2.5rem;
+  font-style: italic;
+  color: var(--color-text-light);
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-big-date {
+    font-size: 1.5rem;
+  }
+
+  .hero-invitation {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+.add-calendar-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+.add-calendar-btn {
+  background-color: transparent;
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.add-calendar-btn:hover {
+  background-color: var(--color-text);
+  color: var(--color-background);
+  transform: translateY(-2px);
+}
+
+.calendar-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-text-light);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0;
+  min-width: 220px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.calendar-option {
+  background: none;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  text-align: center;
+  /* Center text for better look */
+  font-family: var(--font-body);
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+  width: 100%;
+  display: block;
+}
+
+.calendar-option:hover {
+  background-color: var(--color-accent);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
