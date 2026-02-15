@@ -6,6 +6,7 @@ fastapi==0.127.0
 h11==0.16.0
 idna==3.11
 pydantic==2.12.5
+python-dotenv==1.1.0
 pydantic_core==2.41.5
 python-multipart==0.0.21
 starlette==0.50.0

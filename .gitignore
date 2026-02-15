@@ -37,6 +37,16 @@ frontend/out/
 .env.production.local
 backend/.env
 frontend/.env
+*.env
+
+# SQLite
+database/boda.db
+*.db
+*.sqlite3
+
+# Uploads
+backend/uploads/
+
 
 # Logs
 *.log
