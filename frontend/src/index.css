@@ -57,10 +57,33 @@
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   background-color: var(--color-background);
   color: var(--color-text);
   line-height: 1.6;
+  transition: font-family 0.3s ease;
+}
+
+/* Font loading states */
+.font-loading {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.fonts-loaded body {
+  font-family: var(--font-body);
+}
+
+.fonts-loaded h1,
+.fonts-loaded h2,
+.fonts-loaded h3,
+.fonts-loaded h4,
+.fonts-loaded h5,
+.fonts-loaded h6 {
+  font-family: var(--font-heading);
+}
+
+.fonts-loaded .font-handwriting {
+  font-family: var(--font-handwriting);
 }
 
 h1,
