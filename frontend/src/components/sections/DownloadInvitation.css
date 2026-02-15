@@ -1,0 +1,332 @@
+/* DownloadInvitation Section - Enhanced Design */
+.download-invitation-section {
+    padding: 5rem 2rem;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.preview-card-tilt {
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    will-change: transform;
+}
+
+.preview-card-tilt,
+.preview-card-tilt .invitation-image,
+.preview-card-tilt::before {
+    transition: transform 160ms ease, box-shadow 220ms ease;
+}
+
+.preview-card-tilt::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            260px circle at
+                calc(50% + (var(--sx, 0) * 35%))
+                calc(50% + (var(--sy, 0) * 35%)),
+            rgba(255, 255, 255, 0.35),
+            transparent 60%
+        );
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    transition: opacity 180ms ease;
+    z-index: 2;
+}
+
+.preview-card-tilt:hover {
+    box-shadow: 0 26px 55px rgba(163, 188, 153, 0.28);
+}
+
+.preview-card-tilt:hover::after {
+    opacity: 1;
+}
+
+.download-invitation-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(163, 188, 153, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.download-invitation-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(163, 188, 153, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.download-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.invitation-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.invitation-left {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invitation-icon {
+    margin-bottom: 2rem;
+}
+
+.invitation-envelope {
+    font-size: 4rem;
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary-dark);
+    font-family: var(--font-heading);
+}
+
+.invitation-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    font-family: var(--font-body);
+    max-width: 500px;
+}
+
+.download-action-inline {
+    text-align: center;
+}
+
+.invitation-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-body);
+    color: var(--color-text-light);
+    font-size: 1rem;
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    min-width: 30px;
+}
+
+.invitation-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invitation-preview {
+    perspective: 1000px;
+}
+
+.preview-card {
+    width: 280px;
+    height: 400px;
+    background: linear-gradient(145deg, #ffffff, #f8f8f8);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(163, 188, 153, 0.2);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    border: 2px solid rgba(163, 188, 153, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.invitation-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.6s ease;
+}
+
+.preview-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(163, 188, 153, 0.05) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.preview-card:hover::before {
+    transform: translateX(100%);
+}
+
+.preview-card:hover .invitation-image {
+    transform: scale(1.02);
+}
+
+.download-action {
+    text-align: center;
+}
+
+.download-btn {
+    position: relative;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 8px 25px rgba(163, 188, 153, 0.3);
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(163, 188, 153, 0.4);
+}
+
+.download-btn:hover .btn-icon {
+    transform: scale(1.1);
+}
+
+.download-btn:hover .btn-shine {
+    left: 100%;
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 968px) {
+    .invitation-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    
+    .invitation-left {
+        text-align: center;
+    }
+
+    .download-action-inline {
+        text-align: center;
+    }
+    
+    .invitation-features {
+        align-items: center;
+    }
+    
+    .preview-card {
+        width: 240px;
+        height: 340px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .download-invitation-section {
+        padding: 3rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .invitation-description {
+        font-size: 1.1rem;
+    }
+    
+    .preview-card {
+        width: 200px;
+        height: 280px;
+        padding: 1.5rem;
+    }
+    
+    .preview-names {
+        font-size: 1.2rem;
+    }
+    
+    .preview-text {
+        font-size: 1.4rem;
+    }
+    
+    .download-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+    
+    .btn-icon {
+        font-size: 1.2rem;
+    }
+}

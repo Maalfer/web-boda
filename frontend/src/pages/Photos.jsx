@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/ui/Navbar';
 import Footer from '../components/ui/Footer';
 import { getPhotos, uploadPhotos, getStaticUrl } from '../services/api';
-import '../styles/Form.css';
-import '../styles/Photos.css';
+import './Photos.css';
 
 const Photos = () => {
     const [serverPhotos, setServerPhotos] = useState([]);

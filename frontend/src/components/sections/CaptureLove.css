@@ -1,0 +1,26 @@
+/* CaptureLove Section Button Styles */
+.submit-btn {
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: var(--font-body);
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+@media screen and (max-width: 768px) {
+    .submit-btn {
+        padding: 0.8rem;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+}

@@ -3,7 +3,7 @@ import confetti from 'canvas-confetti';
 import Modal from '../ui/Modal';
 import { submitRsvp } from '../../services/api';
 import './Story.css';
-import '../../styles/Form.css';
+import './StoryForm.css';
 
 const Story = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);

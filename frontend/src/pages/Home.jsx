@@ -23,10 +23,10 @@ const Home = () => {
                 <Story />
             </ScrollReveal>
             <ScrollReveal>
-                <CaptureLove />
+                <FAQ />
             </ScrollReveal>
             <ScrollReveal>
-                <FAQ />
+                <CaptureLove />
             </ScrollReveal>
             <DownloadInvitation />
             <Footer />
