@@ -71,12 +71,56 @@ El backend gestiona la base de datos de invitados y el almacenamiento de fotos.
     npm run dev
     ```
 
-### 📸 Recursos de Despliegue
+### 📸 Guía Visual de Despliegue
 
-Para una guía visual sobre el despliegue y configuración, consulta las imágenes en la carpeta `Recursos/repo`:
+#### Dependencias Backend
 
-- **Dependencias Backend**: `Recursos/repo/dependencias-backend.png`
-- **Configuración Frontend**: `Recursos/repo/configurar-frontend*.png`
+Instala las dependencias necesarias para el API FastAPI:
+
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
+![Dependencias Backend](Recursos/repo/dependencias-backend.png)
+
+#### Configuración Frontend - Variables de Entorno
+
+Crea un archivo `.env` en la carpeta `frontend/` basándote en `.env.example`:
+
+```env
+VITE_API_URL=http://localhost:8000
+VITE_PHONE_FATIMA=346********
+VITE_PHONE_MARIO=346********
+```
+
+**Importante**: Aquí es donde se configuran los números de teléfono para que no estén hardcodeados en el código.
+
+![Configurar Frontend 1](Recursos/repo/configurar-frontend1.png)
+
+![Configurar Frontend 2](Recursos/repo/configurar-frontend2.png)
+
+#### Iniciar Servidores
+
+**Backend**:
+```bash
+cd backend
+uvicorn main:app --reload
+```
+El servidor correrá en `http://localhost:8000`.
+
+**Frontend**:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+La aplicación web correrá en `http://localhost:5173`.
+
+#### Acceso al Dashboard
+
+Para ver las confirmaciones de asistencia ("lo que dice la gente") y gestionar las fotos, accede a:
+`http://localhost:5173/dashboard` (requiere login).
 
 ## ✨ Características Destacadas
 
