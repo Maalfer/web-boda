@@ -24,7 +24,9 @@ const Navbar = () => {
                 <li onClick={toggleMenu}><a href="/#hero">Inicio</a></li>
                 <li onClick={toggleMenu}><a href="/#map">Lugar de celebración</a></li>
                 <li onClick={toggleMenu}><a href="/#story">Confirmar asistencia</a></li>
+                <li onClick={toggleMenu}><a href="/#faq">Preguntas frecuentes</a></li>
                 <li onClick={toggleMenu}><a href="/#photos">Captura el amor</a></li>
+                <li onClick={toggleMenu}><a href="/#invitation">Descarga tu invitación</a></li>
             </ul>
         </nav>
     );

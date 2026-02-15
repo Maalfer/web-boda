@@ -41,7 +41,7 @@ const DownloadInvitation = () => {
     };
 
     return (
-        <section className="download-invitation-section">
+        <section id="invitation" className="download-invitation-section">
             <div className="download-container">
                 <div className="invitation-content">
                     <div className="invitation-right">

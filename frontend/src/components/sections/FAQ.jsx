@@ -71,7 +71,7 @@ const FAQ = () => {
     };
 
     return (
-        <section className="faq-section">
+        <section id="faq" className="faq-section">
             <div className="faq-container">
                 <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                     Preguntas frecuentes
