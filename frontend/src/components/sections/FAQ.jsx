@@ -29,8 +29,10 @@ const FAQ = () => {
             question: "¿Hay alojamiento disponible?",
             answer: (
                 <div>
-                    <p>Sí, justo enfrente del lugar de la celebración está el Hotel Oca Palacio de la Llorea Spa, a muy poca distancia del restaurante. Es una opción cómoda si queréis quedaros a dormir después de la boda.</p>
-                    <div style={{ marginTop: '1rem' }}>
+                    <p style={{ textAlign: 'center', fontFamily: 'var(--font-body)', fontSize: '1rem', lineHeight: '1.6', color: 'var(--color-text-light)' }}>
+                        Sí, justo enfrente del lugar de la celebración está el Hotel Oca Palacio de la Llorea Spa, a muy poca distancia del restaurante. Es una opción cómoda si queréis quedaros a dormir después de la boda.
+                    </p>
+                    <div style={{ marginTop: '1rem', textAlign: 'center' }}>
                         <a 
                             href="https://share.google/HbpKK810vzpWYVWwB" 
                             target="_blank" 
