@@ -6,7 +6,7 @@ const DownloadInvitation = () => {
     const previewCardRef = useRef(null);
 
     const handleDownload = () => {
-        window.open('/invitacion.pdf', '_blank');
+        window.open(`${import.meta.env.BASE_URL}invitacion.pdf`, '_blank');
     };
 
     const handlePreviewMouseMove = (e) => {

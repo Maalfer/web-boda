@@ -3,12 +3,23 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/heart.svg" />
+  <link rel="icon" type="image/svg+xml" href="%BASE_URL%heart.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Boda Fátima & Mario</title>
 </head>
 
 <body>
+  <script>
+    // SPA redirect for GitHub Pages (project sites)
+    // Based on https://github.com/rafgraph/spa-github-pages
+    (function (l) {
+      if (l.search && l.search.startsWith('?/')) {
+        var route = l.search.slice(2);
+        var decoded = route.replace(/~and~/g, '&');
+        window.history.replaceState(null, '', l.pathname + decoded + l.hash);
+      }
+    })(window.location);
+  </script>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
