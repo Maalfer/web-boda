@@ -11,7 +11,7 @@ const FAQ = () => {
         },
         {
             question: "¿Habrá parking disponible?",
-            answer: "Sí, tanto la iglesia como el castillo cuentan con parking gratuito. Además, hemos organizado un servicio de shuttle entre ambos locales para mayor comodidad."
+            answer: "Sí, el restaurante donde se celebrarán la ceremonia, el banquete y la fiesta cuenta con un parking amplio para los invitados, por lo que no tendréis problema para aparcar cómodamente."
         },
         {
             question: "¿Qué código de vestimenta debo seguir?",
