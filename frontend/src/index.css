@@ -5,6 +5,7 @@
   src: url('./assets/fonts/LovelyGirl.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
   src: url('./assets/fonts/Griffiths.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {

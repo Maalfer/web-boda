@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import iconos from '../../assets/images/iconos.webp';
 import './Map.css';
 
 const Map = () => {
+    const [isMapLoaded, setIsMapLoaded] = useState(false);
+    const mapRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !isMapLoaded) {
+                        setIsMapLoaded(true);
+                        observer.disconnect();
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        if (mapRef.current) {
+            observer.observe(mapRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [isMapLoaded]);
     return (
         <section id="map" className="map-section">
             <div className="map-message">
@@ -11,6 +33,8 @@ const Map = () => {
                 <img
                     src={iconos}
                     alt="Iconos de boda"
+                    width="627"
+                    height="350"
                     style={{
                         maxWidth: '100%',
                         height: 'auto',
@@ -29,18 +53,37 @@ const Map = () => {
                     Cómo llegar
                 </a>
             </div>
-            <div className="map-container">
-                <iframe
-                    title="Ubicación Boda"
-                    width="100%"
-                    height="450"
-                    frameBorder="0"
-                    scrolling="no"
-                    marginHeight="0"
-                    marginWidth="0"
-                    src="https://maps.google.com/maps?q=43.5358,-5.5894&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                >
-                </iframe>
+            <div className="map-container" ref={mapRef}>
+                {isMapLoaded ? (
+                    <iframe
+                        title="Ubicación Boda"
+                        width="100%"
+                        height="450"
+                        frameBorder="0"
+                        scrolling="no"
+                        marginHeight="0"
+                        marginWidth="0"
+                        src="https://maps.google.com/maps?q=43.5358,-5.5894&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        loading="lazy"
+                    >
+                    </iframe>
+                ) : (
+                    <div style={{
+                        width: '100%',
+                        height: '450px',
+                        background: 'linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#666',
+                        fontSize: '1.1rem'
+                    }}>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📍</div>
+                            Cargando mapa...
+                        </div>
+                    </div>
+                )}
             </div>
         </section>
     );

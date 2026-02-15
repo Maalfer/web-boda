@@ -3,8 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+// Performance: Remove StrictMode in production for better performance
+const isDevelopment = import.meta.env.DEV
+
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  isDevelopment ? <StrictMode><App /></StrictMode> : <App />
 )
