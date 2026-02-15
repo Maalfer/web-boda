@@ -7,7 +7,7 @@ const FAQ = () => {
     const faqs = [
         {
             question: "¿Puedo llevar acompañante?",
-            answer: "Sí, puedes traer a acompañante. Solo te pedimos que nos lo comuniques con antelación para poder organizarlo y que, a ser posible, lo conozcamos.\n\nSi tienes cualquier duda, ponte en contacto con nosotros para confirmarlo directamente."
+            answer: "Sí, puedes traer acompañante. Solo te pedimos que nos lo comuniques con antelación para poder organizarlo y que, a ser posible, lo conozcamos.\n\nSi tienes cualquier duda, ponte en contacto con nosotros para confirmarlo directamente."
         },
         {
             question: "¿Habrá parking disponible?",

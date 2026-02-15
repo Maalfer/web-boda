@@ -5,13 +5,38 @@ import './Modal.css';
 const Modal = ({ isOpen, onClose, title, children }) => {
     useEffect(() => {
         if (isOpen) {
+            // Save current scroll position
+            const scrollY = window.scrollY;
+            
+            // Disable body scroll but maintain position
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
             document.body.style.overflow = 'hidden';
+            
+            // Add touch action handling for iOS
+            document.body.style.touchAction = 'none';
         } else {
-            document.body.style.overflow = 'unset';
+            // Restore body scroll and position
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            document.body.style.touchAction = '';
+            
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
         }
 
         return () => {
-            document.body.style.overflow = 'unset';
+            // Cleanup: restore body scroll
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            document.body.style.touchAction = '';
         };
     }, [isOpen]);
 
