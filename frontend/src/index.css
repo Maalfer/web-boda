@@ -83,6 +83,13 @@ a {
   color: inherit;
 }
 
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--color-primary-dark);
+  text-align: center;
+}
+
 /* Scroll Reveal Animations */
 .reveal {
   opacity: 0;
@@ -94,4 +101,12 @@ a {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 }

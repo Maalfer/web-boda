@@ -1,0 +1,102 @@
+.faq-section {
+    padding: 4rem 2rem;
+    background-color: white;
+}
+
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media screen and (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.faq-item {
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 12px rgba(163, 188, 153, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    min-height: fit-content;
+    border: 1px solid rgba(163, 188, 153, 0.1);
+}
+
+.faq-item.active {
+    box-shadow: 0 6px 20px rgba(163, 188, 153, 0.25);
+    transform: translateY(-2px);
+    border: 1px solid rgba(163, 188, 153, 0.2);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: white;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question.active {
+    background-color: var(--color-primary);
+}
+
+.faq-question-text {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.faq-question.active .faq-question-text {
+    color: white;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+}
+
+.faq-question.active .faq-icon {
+    color: white;
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    padding: 0 1.5rem;
+    background-color: white;
+    opacity: 0;
+}
+
+.faq-answer.active {
+    max-height: 300px;
+    padding: 1.5rem;
+    opacity: 1;
+}
+
+.faq-answer-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    text-align: center;
+}

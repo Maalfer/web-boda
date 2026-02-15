@@ -7,7 +7,7 @@ Bienvenido al repositorio del sitio web para la boda de Fátima y Mario. Este pr
 - **Frontend**: React, Vite, CSS (Diseño personalizado), Canvas Confetti.
 - **Backend**: FastAPI (Python), SQLite.
 - **Base de Datos**: SQLite (`boda.db`).
-- **Despliegue**: Frontend (Vercel/Netlify/Hosting estático), Backend (VPS/Render/Railway).
+- **Despliegue**: VPS con Nginx y CDN Cloudflare.
 
 ## 📂 Estructura del Proyecto
 
