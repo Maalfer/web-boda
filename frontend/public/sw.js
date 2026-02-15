@@ -1,17 +1,12 @@
-// Service Worker for performance optimization
 const CACHE_NAME = 'wedding-app-v1';
 const STATIC_CACHE_NAME = 'wedding-static-v1';
 
-// Assets to cache immediately
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
-  // Add your main CSS and JS files here
-  // These will be populated during build
 ];
 
-// Install event - cache static assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(STATIC_CACHE_NAME)
@@ -26,7 +21,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
@@ -47,16 +41,13 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch event - serve from cache with network fallback
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   
-  // Skip non-GET requests
   if (request.method !== 'GET') {
     return;
   }
   
-  // Skip cross-origin requests
   if (!request.url.startsWith(self.location.origin)) {
     return;
   }
@@ -64,21 +55,17 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(request)
       .then((response) => {
-        // Cache hit - return cached response
         if (response) {
           console.log('Service Worker: Serving from cache:', request.url);
           return response;
         }
         
-        // Cache miss - fetch from network and cache
         return fetch(request)
           .then((response) => {
-            // Don't cache non-successful responses
             if (!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
             
-            // Clone the response since it can only be used once
             const responseToCache = response.clone();
             
             caches.open(STATIC_CACHE_NAME)
@@ -92,7 +79,6 @@ self.addEventListener('fetch', (event) => {
           .catch((error) => {
             console.log('Service Worker: Fetch failed:', error);
             
-            // Return a fallback for HTML requests
             if (request.headers.get('accept').includes('text/html')) {
               return caches.match('/') || new Response('Offline', {
                 status: 503,
@@ -104,7 +90,6 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Background sync for offline functionality
 self.addEventListener('sync', (event) => {
   if (event.tag === 'background-sync') {
     console.log('Service Worker: Background sync triggered');
@@ -113,6 +98,5 @@ self.addEventListener('sync', (event) => {
 });
 
 function doBackgroundSync() {
-  // Handle any background sync operations here
   return Promise.resolve();
 }

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
-
 @font-face {
   font-family: 'Lovely Girl';
   src: url('./assets/fonts/LovelyGirl.otf') format('opentype');
@@ -17,34 +15,23 @@
 }
 
 :root {
-  /* Color Palette */
   --color-primary: #A3BC99;
-  /* Lighter Green (Buttons) */
   --color-primary-dark: #8F9E84;
-  /* Darker Green (Hover) */
   --color-secondary: #FFFDD0;
-  /* Cream */
   --color-background: #FFFEF0;
-  /* Very light cream/white */
   --color-text: #2C3E50;
-  /* Dark Slate */
   --color-text-light: #586E75;
-  /* Muted Text */
   --color-accent: #F8F3ED;
-  /* Cream Accent/Background */
 
-  /* Typography */
   --font-heading: 'Lovely Girl', serif;
   --font-body: 'Lato', sans-serif;
   --font-handwriting: 'Griffiths', sans-serif;
 
-  /* Spacing */
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 2rem;
   --spacing-xl: 4rem;
 
-  /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
@@ -64,7 +51,6 @@ body {
   transition: font-family 0.3s ease;
 }
 
-/* Font loading states */
 .font-loading {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
@@ -115,7 +101,6 @@ a {
   text-align: center;
 }
 
-/* Scroll Reveal Animations */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -128,7 +113,6 @@ a {
   transform: translateY(0);
 }
 
-/* Responsive styles */
 @media screen and (max-width: 768px) {
   .section-title {
     font-size: 2rem;

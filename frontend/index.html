@@ -7,24 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Boda Fátima & Mario</title>
   
-  <!-- PWA Meta Tags -->
   <meta name="theme-color" content="#A3BC99" />
   <meta name="description" content="Nuestra boda - Fátima y Mario" />
   <link rel="manifest" href="%BASE_URL%manifest.json" />
   
-  <!-- Performance optimizations -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://maps.googleapis.com" />
   <link rel="preconnect" href="https://maps.gstatic.com" />
   
-  <!-- Font loading optimization -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lovely+Girl:wght@400;700&family=Griffiths+by+Eurostyle&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lovely+Girl:wght@400;700&family=Griffiths+by+Eurostyle&display=swap"></noscript>
   
-  <!-- Critical CSS inline -->
   <style>
-    /* Prevent flash of unstyled content */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       margin: 0;
@@ -34,24 +29,20 @@
       line-height: 1.6;
     }
     
-    /* Loading skeleton */
     #root {
       min-height: 100vh;
       background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
     }
     
-    /* Critical layout styles */
     * {
       box-sizing: border-box;
     }
     
-    /* Prevent layout shifts */
     img {
       max-width: 100%;
       height: auto;
     }
     
-    /* Smooth font transitions */
     .font-loading {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     }
@@ -64,8 +55,6 @@
 
 <body>
   <script>
-    // SPA redirect for GitHub Pages (project sites)
-    // Based on https://github.com/rafgraph/spa-github-pages
     (function (l) {
       if (l.search && l.search.startsWith('?/')) {
         var route = l.search.slice(2);

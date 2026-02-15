@@ -4,10 +4,8 @@ import './index.css'
 import App from './App.jsx'
 import './utils/performance.js'
 
-// Performance: Remove StrictMode in production for better performance
 const isDevelopment = import.meta.env.DEV
 
-// Register Service Worker for performance optimization
 if ('serviceWorker' in navigator && !isDevelopment) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
@@ -20,10 +18,8 @@ if ('serviceWorker' in navigator && !isDevelopment) {
   })
 }
 
-// Add font loading classes
 document.body.classList.add('font-loading');
 
-// Performance mark for app initialization
 if ('performance' in window && 'mark' in performance) {
   performance.mark('app-init-start');
 }
@@ -32,7 +28,6 @@ createRoot(document.getElementById('root')).render(
   isDevelopment ? <StrictMode><App /></StrictMode> : <App />
 )
 
-// Performance mark for app render complete
 if ('performance' in window && 'mark' in performance) {
   performance.mark('app-render-complete');
 }

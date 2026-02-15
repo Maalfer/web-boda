@@ -1,23 +1,13 @@
-// Performance monitoring and optimization
 class PerformanceOptimizer {
   constructor() {
     this.init();
   }
 
   init() {
-    // Monitor font loading
     this.monitorFontLoading();
-    
-    // Monitor LCP
     this.monitorLCP();
-    
-    // Monitor CLS
     this.monitorCLS();
-    
-    // Optimize images
     this.optimizeImages();
-    
-    // Add performance marks
     this.addPerformanceMarks();
   }
 
@@ -60,7 +50,6 @@ class PerformanceOptimizer {
   }
 
   optimizeImages() {
-    // Add loading="lazy" to images that don't have it
     const images = document.querySelectorAll('img:not([loading])');
     images.forEach(img => {
       img.setAttribute('loading', 'lazy');
@@ -68,10 +57,8 @@ class PerformanceOptimizer {
   }
 
   addPerformanceMarks() {
-    // Mark key performance points
     performance.mark('app-start');
     
-    // Mark when DOM is ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
         performance.mark('dom-loaded');
@@ -80,11 +67,9 @@ class PerformanceOptimizer {
       performance.mark('dom-loaded');
     }
     
-    // Mark when page is fully loaded
     window.addEventListener('load', () => {
       performance.mark('page-loaded');
       
-      // Measure performance
       setTimeout(() => {
         this.measurePerformance();
       }, 0);
@@ -93,13 +78,9 @@ class PerformanceOptimizer {
 
   measurePerformance() {
     if ('performance' in window && 'measure' in performance) {
-      // Measure time from app start to DOM loaded
       performance.measure('app-to-dom', 'app-start', 'dom-loaded');
-      
-      // Measure time from app start to page loaded
       performance.measure('app-to-page-load', 'app-start', 'page-loaded');
       
-      // Log performance measures
       const measures = performance.getEntriesByType('measure');
       measures.forEach(measure => {
         console.log(`${measure.name}: ${measure.duration.toFixed(2)}ms`);
@@ -107,7 +88,6 @@ class PerformanceOptimizer {
     }
   }
 
-  // Defer non-critical JavaScript
   deferScript(src) {
     const script = document.createElement('script');
     script.src = src;
@@ -116,7 +96,6 @@ class PerformanceOptimizer {
     document.body.appendChild(script);
   }
 
-  // Preload critical resources
   preloadResource(url, as) {
     const link = document.createElement('link');
     link.rel = 'preload';
@@ -126,7 +105,6 @@ class PerformanceOptimizer {
   }
 }
 
-// Initialize performance optimizer
 if (typeof window !== 'undefined') {
   window.performanceOptimizer = new PerformanceOptimizer();
 }
