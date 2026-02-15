@@ -159,6 +159,7 @@ const Photos = () => {
                                     alt="Recuerdo de boda"
                                     className="photo-img"
                                     loading="lazy"
+                                    decoding="async"
                                     onError={(e) => { e.target.parentElement.style.display = 'none'; }}
                                 />
                             </div>

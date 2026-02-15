@@ -1,6 +1,38 @@
 .faq-section {
     padding: 4rem 2rem;
     background-color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-section::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: 70px;
+    height: 70px;
+    background-image: url('../../assets/images/estrella-2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.18;
+    pointer-events: none;
+    transform: rotate(-10deg);
+}
+
+.faq-section::after {
+    content: '';
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    width: 90px;
+    height: 90px;
+    background-image: url('../../assets/images/estrella-3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.14;
+    pointer-events: none;
+    transform: rotate(12deg);
 }
 
 .faq-container {
@@ -79,18 +111,22 @@
 }
 
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
     padding: 0 1.5rem;
     background-color: white;
     opacity: 0;
 }
 
 .faq-answer.active {
-    max-height: 300px;
+    grid-template-rows: 1fr;
     padding: 1.5rem;
     opacity: 1;
+}
+
+.faq-answer-inner {
+    overflow: hidden;
 }
 
 .faq-answer-text {

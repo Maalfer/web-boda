@@ -4,6 +4,9 @@ import './DownloadInvitation.css';
 
 const DownloadInvitation = () => {
     const previewCardRef = useRef(null);
+    const isDraggingRef = useRef(false);
+    const lastPointerRef = useRef({ x: 0, y: 0 });
+    const tiltRef = useRef({ rx: 0, ry: 0 });
 
     const handleDownload = () => {
         window.open(`${import.meta.env.BASE_URL}invitacion.pdf`, '_blank');
@@ -12,6 +15,8 @@ const DownloadInvitation = () => {
     const handlePreviewMouseMove = (e) => {
         const card = previewCardRef.current;
         if (!card) return;
+
+        if (isDraggingRef.current) return;
 
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -34,10 +39,54 @@ const DownloadInvitation = () => {
         const card = previewCardRef.current;
         if (!card) return;
 
+        if (isDraggingRef.current) return;
+
         card.style.setProperty('--rx', '0deg');
         card.style.setProperty('--ry', '0deg');
         card.style.setProperty('--sx', '0');
         card.style.setProperty('--sy', '0');
+    };
+
+    const handlePreviewPointerDown = (e) => {
+        const card = previewCardRef.current;
+        if (!card) return;
+
+        isDraggingRef.current = true;
+        lastPointerRef.current = { x: e.clientX, y: e.clientY };
+
+        card.setPointerCapture?.(e.pointerId);
+        card.style.setProperty('--dragging', '1');
+    };
+
+    const handlePreviewPointerMove = (e) => {
+        const card = previewCardRef.current;
+        if (!card || !isDraggingRef.current) return;
+
+        const dx = e.clientX - lastPointerRef.current.x;
+        const dy = e.clientY - lastPointerRef.current.y;
+        lastPointerRef.current = { x: e.clientX, y: e.clientY };
+
+        const sensitivity = 0.18;
+        const nextRy = tiltRef.current.ry + dx * sensitivity;
+        const nextRx = tiltRef.current.rx - dy * sensitivity;
+
+        const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+        tiltRef.current = {
+            rx: clamp(nextRx, -22, 22),
+            ry: clamp(nextRy, -26, 26)
+        };
+
+        card.style.setProperty('--rx', `${tiltRef.current.rx}deg`);
+        card.style.setProperty('--ry', `${tiltRef.current.ry}deg`);
+    };
+
+    const handlePreviewPointerUp = (e) => {
+        const card = previewCardRef.current;
+        if (!card) return;
+
+        isDraggingRef.current = false;
+        card.releasePointerCapture?.(e.pointerId);
+        card.style.setProperty('--dragging', '0');
     };
 
     return (
@@ -51,11 +100,17 @@ const DownloadInvitation = () => {
                                 className="preview-card preview-card-tilt"
                                 onMouseMove={handlePreviewMouseMove}
                                 onMouseLeave={handlePreviewMouseLeave}
+                                onPointerDown={handlePreviewPointerDown}
+                                onPointerMove={handlePreviewPointerMove}
+                                onPointerUp={handlePreviewPointerUp}
+                                onPointerCancel={handlePreviewPointerUp}
                             >
                                 <img 
                                     src={invitationImage} 
                                     alt="Invitación Fátima y Mario" 
                                     className="invitation-image"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
                         </div>

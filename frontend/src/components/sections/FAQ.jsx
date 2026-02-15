@@ -93,9 +93,13 @@ const FAQ = () => {
                             </button>
                             
                             <div className={`faq-answer ${activeIndex === index ? 'active' : ''}`}>
-                                <p className="faq-answer-text">
-                                    {faq.answer}
-                                </p>
+                                <div className="faq-answer-inner">
+                                    {typeof faq.answer === 'string' ? (
+                                        <p className="faq-answer-text">{faq.answer}</p>
+                                    ) : (
+                                        faq.answer
+                                    )}
+                                </div>
                             </div>
                         </div>
                     ))}

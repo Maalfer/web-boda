@@ -19,6 +19,8 @@ const NotFound = () => {
             <img
                 src={detectiveCocker}
                 alt="Detective Cocker"
+                loading="lazy"
+                decoding="async"
                 style={{
                     width: '300px',
                     borderRadius: '50%',

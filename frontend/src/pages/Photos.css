@@ -1,6 +1,6 @@
 /* Photos.css */
 .photos-page {
-    background-color: var(--color-background);
+    background-color: white;
     min-height: 100vh;
     padding-top: 2rem;
     display: flex;
@@ -15,7 +15,7 @@
 
 /* Upload Section */
 .upload-section {
-    background-color: var(--color-white);
+    background-color: white;
     padding: 4rem 2rem;
     text-align: center;
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
@@ -121,10 +121,11 @@
 }
 
 .gallery-title::after {
-    content: '♥';
+    content: '\2665';
     display: block;
     font-size: 1.5rem;
-    color: var(--color-primary);
+    color: var(--color-primary-dark);
+    font-family: var(--font-body);
     margin-top: 0.5rem;
 }
 

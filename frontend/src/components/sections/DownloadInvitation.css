@@ -6,15 +6,62 @@
     overflow: hidden;
 }
 
+.download-invitation-section .download-container {
+    position: relative;
+}
+
+.download-invitation-section .download-container::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 64px;
+    height: 64px;
+    background-image: url('../../assets/images/estrella-2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.12;
+    pointer-events: none;
+    transform: rotate(-8deg);
+    z-index: 0;
+}
+
+.download-invitation-section .download-container::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 82px;
+    height: 82px;
+    background-image: url('../../assets/images/estrella-3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.1;
+    pointer-events: none;
+    transform: rotate(10deg);
+    z-index: 0;
+}
+
 .preview-card-tilt {
     transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
     will-change: transform;
+    touch-action: none;
+    cursor: grab;
+}
+
+.preview-card-tilt:active {
+    cursor: grabbing;
 }
 
 .preview-card-tilt,
 .preview-card-tilt .invitation-image,
 .preview-card-tilt::before {
     transition: transform 160ms ease, box-shadow 220ms ease;
+}
+
+.preview-card-tilt[style*="--dragging: 1"],
+.preview-card-tilt[style*="--dragging:1"] {
+    transition: none;
 }
 
 .preview-card-tilt::after {
