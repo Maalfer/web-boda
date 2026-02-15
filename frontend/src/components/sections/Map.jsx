@@ -1,5 +1,5 @@
 import React from 'react';
-import iconos from '../../assets/images/iconos.png';
+import iconos from '../../assets/images/iconos.webp';
 import './Map.css';
 
 const Map = () => {
@@ -19,7 +19,7 @@ const Map = () => {
                         margin: '0.1rem 0'
                     }}
                 />
-                <p>Os esperamos para celebrarlo juntos el <strong style={{ color: 'var(--color-primary-dark)' }}>sábado 8 de agosto de 2026</strong> a las <strong style={{ color: 'var(--color-primary-dark)' }}>17:30 h.</strong> <br></br>en <strong style={{ color: 'var(--color-primary-dark)' }}>La Hacienda de la Llorea Golf (Gijón)</strong></p>
+                <p>Os esperamos para celebrarlo juntos el <strong style={{ color: 'var(--color-primary-dark)' }}>sábado 8 de agosto de 2026</strong> a las <strong style={{ color: 'var(--color-primary-dark)' }}>17:30&nbsp;h.</strong> <br></br>en <strong style={{ color: 'var(--color-primary-dark)' }}>La Hacienda de la Llorea Golf (Gijón)</strong></p>
                 <a
                     href="https://www.google.com/maps/search/?api=1&query=La+Hacienda+de+la+Llorea+Golf+Gijon"
                     target="_blank"

@@ -1,5 +1,5 @@
 import React from 'react';
-import iconos from '../../assets/images/iconos.png';
+import iconos from '../../assets/images/iconos.webp';
 
 const IconsSection = () => {
     return (

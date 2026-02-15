@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   /* Background with white overlay (0.7 opacity) */
-  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../../assets/images/fondo.jpg');
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../../assets/images/fondo.webp');
   background-size: cover;
   background-position: center;
   text-align: center;

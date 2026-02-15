@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import polaroid1 from '../../assets/images/polaroid1.jpg';
-import polaroid2 from '../../assets/images/polaroid2.jpg';
+import polaroid1 from '../../assets/images/polaroid1.webp';
+import polaroid2 from '../../assets/images/polaroid2.webp';
 import './CaptureLove.css';
 
 const CaptureLove = () => {

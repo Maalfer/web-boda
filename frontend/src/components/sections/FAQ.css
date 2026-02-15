@@ -12,7 +12,7 @@
     left: 18px;
     width: 70px;
     height: 70px;
-    background-image: url('../../assets/images/estrella-2.png');
+    background-image: url('../../assets/images/estrella-2.webp');
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.18;
@@ -27,7 +27,7 @@
     right: 14px;
     width: 90px;
     height: 90px;
-    background-image: url('../../assets/images/estrella-3.png');
+    background-image: url('../../assets/images/estrella-3.webp');
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0.14;

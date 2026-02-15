@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import detectiveCocker from '../assets/images/cocker_detective.png';
+import detectiveCocker from '../assets/images/cocker_detective.webp';
 
 const NotFound = () => {
     const navigate = useNavigate();

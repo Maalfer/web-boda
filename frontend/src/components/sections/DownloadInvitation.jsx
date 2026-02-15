@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import invitationImage from '../../assets/images/invitation.png';
+import invitationImage from '../../assets/images/invitation.webp';
 import './DownloadInvitation.css';
 
 const DownloadInvitation = () => {
