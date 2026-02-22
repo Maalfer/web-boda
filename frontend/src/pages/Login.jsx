@@ -26,7 +26,7 @@ const Login = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'var(--color-background)' }}>
+        <div className="login-container">
             <form className="rsvp-form" onSubmit={handleLogin} style={{ padding: '3rem', backgroundColor: 'white', borderRadius: 'var(--radius-md)', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}>
                 <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontFamily: 'var(--font-heading)' }}>Acceso Privado</h2>
                 <div className="form-group">

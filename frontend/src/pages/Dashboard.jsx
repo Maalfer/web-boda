@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getRsvps, deleteRsvp, getPhotos, deletePhoto, getStaticUrl } from '../services/api';
+import { getRsvps, deleteRsvp, getPhotos, deletePhoto, getStaticUrl, updatePin } from '../services/api';
 
 const Dashboard = () => {
     const [rsvps, setRsvps] = useState([]);
     const [photos, setPhotos] = useState([]);
     const [showPhotos, setShowPhotos] = useState(false);
+    const [pinInputValue, setPinInputValue] = useState('');
+    const [pinMessage, setPinMessage] = useState('');
     const navigate = useNavigate();
 
     const fetchPhotos = async () => {
@@ -20,6 +22,24 @@ const Dashboard = () => {
         } catch (error) {
             console.error('Error fetching photos:', error);
         }
+    };
+
+    const handleUpdatePin = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        try {
+            const data = await updatePin(pinInputValue, token);
+            if (data.status === 'success') {
+                setPinMessage('PIN actualizado correctamente');
+                setPinInputValue('');
+            } else {
+                setPinMessage('Error al actualizar PIN');
+            }
+        } catch (error) {
+            console.error('Error updating PIN:', error);
+            setPinMessage('Error de conexión');
+        }
+        setTimeout(() => setPinMessage(''), 3000);
     };
 
     const togglePhotos = () => {
@@ -62,7 +82,7 @@ const Dashboard = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
-            navigate('/balulero');
+            navigate('/login');
             return;
         }
 
@@ -120,11 +140,34 @@ const Dashboard = () => {
                 </table>
             </div>
             <button
-                onClick={() => { localStorage.removeItem('token'); navigate('/balulero'); }}
+                onClick={() => { localStorage.removeItem('token'); navigate('/login'); }}
                 style={{ marginTop: '2rem', padding: '0.5rem 1rem', cursor: 'pointer', backgroundColor: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px' }}
             >
                 Cerrar sesión
             </button>
+
+            <hr style={{ margin: '3rem 0', border: 'none', borderTop: '1px solid #ddd' }} />
+
+            <h2 style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary-dark)', marginBottom: '1rem' }}>Configuración de Acceso</h2>
+            <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '8px', boxShadow: '0 2px 5px rgba(0,0,0,0.05)', marginBottom: '2rem' }}>
+                <p style={{ marginBottom: '1rem', color: '#666' }}>Establece un PIN para proteger el acceso a la web.</p>
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                    <input
+                        type="password"
+                        value={pinInputValue}
+                        onChange={(e) => setPinInputValue(e.target.value)}
+                        placeholder="Nuevo PIN"
+                        style={{ padding: '0.5rem', border: '1px solid #ddd', borderRadius: '4px', maxWidth: '200px' }}
+                    />
+                    <button
+                        onClick={handleUpdatePin}
+                        style={{ padding: '0.5rem 1rem', cursor: 'pointer', backgroundColor: 'var(--color-primary)', color: 'white', border: 'none', borderRadius: '4px' }}
+                    >
+                        Guardar PIN
+                    </button>
+                    {pinMessage && <span style={{ color: pinMessage.includes('Error') ? 'red' : 'green' }}>{pinMessage}</span>}
+                </div>
+            </div>
 
             <hr style={{ margin: '3rem 0', border: 'none', borderTop: '1px solid #ddd' }} />
 

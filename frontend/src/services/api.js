@@ -81,3 +81,40 @@ export const deletePhoto = async (photoId) => {
     });
     return response.json();
 };
+
+/**
+ * Actualiza el PIN de acceso a la web.
+ */
+export const updatePin = async (pin, token) => {
+    const response = await fetch(`${API_BASE_URL}/api/settings/pin`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ pin }),
+    });
+    return response.json();
+};
+
+/**
+ * Verifica si un PIN de acceso es correcto.
+ */
+export const verifyPin = async (pin) => {
+    const response = await fetch(`${API_BASE_URL}/api/settings/verify-pin`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin }),
+    });
+    return response.json();
+};
+
+/**
+ * Comprueba si hay un PIN configurado.
+ */
+export const checkPinConfigured = async () => {
+    const response = await fetch(`${API_BASE_URL}/api/settings/pin`, {
+        method: 'GET'
+    });
+    return response.json();
+};

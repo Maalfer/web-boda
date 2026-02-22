@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .config import APP_TITLE, CORS_ORIGINS, UPLOADS_DIR
 from .database import init_db
-from .routes import rsvp, photos, auth
+from .routes import rsvp, photos, auth, settings
 
 # Crear la instancia de la aplicación
 app = FastAPI(title=APP_TITLE)
@@ -35,6 +35,7 @@ init_db()
 app.include_router(rsvp.router)
 app.include_router(photos.router)
 app.include_router(auth.router)
+app.include_router(settings.router)
 
 
 # Rutas raíz

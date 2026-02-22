@@ -1,4 +1,14 @@
 /* Login Page Form Styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../assets/images/fondo.webp');
+    background-size: cover;
+    background-position: center;
+}
+
 .form-group {
     display: flex;
     flex-direction: column;

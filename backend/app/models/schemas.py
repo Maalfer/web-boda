@@ -15,3 +15,9 @@ class RSVP(BaseModel):
 class Login(BaseModel):
     username: str
     password: str
+
+class PinUpdate(BaseModel):
+    pin: str
+
+class PinVerify(BaseModel):
+    pin: str

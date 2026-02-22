@@ -27,6 +27,9 @@ DATABASE_PATH = os.path.join(DB_DIR, "boda.db")
 UPLOADS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads")
 
 # Auth
-ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "admin")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "changeme")
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+
+if not ADMIN_USERNAME or not ADMIN_PASSWORD:
+    raise ValueError("Las credenciales de administrador (ADMIN_USERNAME y ADMIN_PASSWORD) deben estar configuradas en el archivo .env")
 DEMO_TOKEN = os.getenv("DEMO_TOKEN", "fake-jwt-token-for-demo")

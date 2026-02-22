@@ -19,5 +19,7 @@ def init_db():
                  (name text, attendance text, companion text, transport text, allergies text, message text)''')
     c.execute('''CREATE TABLE IF NOT EXISTS photos
                  (id text, filename text)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS settings
+                 (key text PRIMARY KEY, value text)''')
     conn.commit()
     conn.close()
