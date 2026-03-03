@@ -78,7 +78,8 @@ const AccessBarrier = ({ children }) => {
     // Content is always rendered to show the background
     // But if not granted, an overlay is shown on top
 
-    if (isConfigured === null) {
+    // Si ya está concedido (sessionStorage), no hay que esperar la comprobación de config
+    if (isConfigured === null && !isGranted) {
         return (
             <>
                 {children}

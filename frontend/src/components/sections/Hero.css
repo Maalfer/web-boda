@@ -1,5 +1,5 @@
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,7 +8,9 @@
   background-size: cover;
   background-position: center;
   text-align: center;
-  padding: 6rem 2rem 2rem;
+  /* padding-top must exceed the fixed navbar height (~70px) with breathing room */
+  padding: 6.5rem 2rem 3rem;
+  box-sizing: border-box;
 }
 
 .hero-title {
@@ -44,6 +46,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .hero {
+    padding: 6.5rem 1.5rem 2.5rem;
+  }
+
   .hero-title {
     font-size: 2.5rem;
   }
