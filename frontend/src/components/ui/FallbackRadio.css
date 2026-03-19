@@ -1,0 +1,147 @@
+/* Native radio buttons (fallback) */
+.native-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.native-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px;
+}
+
+.native-radio-label:hover {
+    background-color: rgba(184, 196, 172, 0.1);
+}
+
+.native-radio-input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    -webkit-appearance: radio;
+    appearance: radio;
+    flex-shrink: 0;
+}
+
+.native-radio-text {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Checkbox-based radio buttons (more reliable on mobile) */
+.checkbox-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    border: 2px solid transparent;
+    background-color: #f8f9fa;
+    min-height: 44px;
+}
+
+.checkbox-radio-label:hover {
+    background-color: rgba(184, 196, 172, 0.1);
+    border-color: rgba(184, 196, 172, 0.3);
+}
+
+.checkbox-radio-label:has(.checkbox-radio-input:checked) {
+    background-color: rgba(184, 196, 172, 0.15);
+    border-color: var(--color-primary);
+}
+
+.checkbox-radio-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.checkbox-radio-custom {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.checkbox-radio-input:checked ~ .checkbox-radio-custom {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+}
+
+.checkbox-radio-input:checked ~ .checkbox-radio-custom::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+}
+
+.checkbox-radio-text {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    font-size: 1rem;
+    flex: 1;
+    pointer-events: none;
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 768px) {
+    .native-radio-input {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .checkbox-radio-custom {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .checkbox-radio-input:checked ~ .checkbox-radio-custom::after {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .checkbox-radio-text,
+    .native-radio-text {
+        font-size: 1.1rem;
+    }
+    
+    .checkbox-radio-label,
+    .native-radio-label {
+        padding: 1rem 0.75rem;
+        min-height: 48px;
+    }
+}

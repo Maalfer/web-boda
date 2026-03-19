@@ -13,6 +13,7 @@
     padding: 1rem 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
 }
 
 .modal-content {
@@ -28,6 +29,7 @@
     margin: auto;
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
+    touch-action: manipulation;
 }
 
 .modal-close {
@@ -52,6 +54,7 @@
     .modal-overlay {
         padding: 0.5rem 0;
         align-items: flex-start;
+        touch-action: pan-y;
     }
 
     .modal-content {
@@ -62,6 +65,7 @@
         overflow: visible;
         transform: translate3d(0, 0, 0);
         -webkit-transform: translate3d(0, 0, 0);
+        touch-action: manipulation;
     }
 
     .modal-title {

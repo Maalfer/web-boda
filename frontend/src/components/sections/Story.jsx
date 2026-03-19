@@ -137,8 +137,8 @@ const Story = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="attendance">¿Asistirás? *</label>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
-                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontWeight: 'normal' }}>
+                        <div className="simple-radio-group">
+                            <label className="simple-radio-label">
                                 <input
                                     type="radio"
                                     name="attendance"
@@ -146,10 +146,11 @@ const Story = () => {
                                     checked={formData.attendance === 'Sí, asistiré'}
                                     onChange={handleChange}
                                     required
+                                    className="simple-radio-input"
                                 />
-                                Sí, asistiré
+                                <span className="simple-radio-text">Sí, asistiré</span>
                             </label>
-                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontWeight: 'normal' }}>
+                            <label className="simple-radio-label">
                                 <input
                                     type="radio"
                                     name="attendance"
@@ -157,8 +158,9 @@ const Story = () => {
                                     checked={formData.attendance === 'No podré asistir'}
                                     onChange={handleChange}
                                     required
+                                    className="simple-radio-input"
                                 />
-                                No podré asistir
+                                <span className="simple-radio-text">No podré asistir</span>
                             </label>
                         </div>
                     </div>
@@ -188,8 +190,8 @@ const Story = () => {
 
                     <div className="form-group">
                         <label htmlFor="transport">¿Necesitarás transporte? Habrá autobús disponible desde Avilés tanto para la ida como para la vuelta de la celebración *</label>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
-                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontWeight: 'normal' }}>
+                        <div className="simple-radio-group">
+                            <label className="simple-radio-label">
                                 <input
                                     type="radio"
                                     name="transport"
@@ -197,10 +199,11 @@ const Story = () => {
                                     checked={formData.transport === 'Sí, necesitaré autobús'}
                                     onChange={handleChange}
                                     required
+                                    className="simple-radio-input"
                                 />
-                                Sí, necesitaré autobús
+                                <span className="simple-radio-text">Sí, necesitaré autobús</span>
                             </label>
-                            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontWeight: 'normal' }}>
+                            <label className="simple-radio-label">
                                 <input
                                     type="radio"
                                     name="transport"
@@ -208,8 +211,9 @@ const Story = () => {
                                     checked={formData.transport === 'No, iré en coche'}
                                     onChange={handleChange}
                                     required
+                                    className="simple-radio-input"
                                 />
-                                No, iré en coche
+                                <span className="simple-radio-text">No, iré en coche</span>
                             </label>
                         </div>
                     </div>
