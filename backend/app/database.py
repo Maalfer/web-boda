@@ -16,7 +16,7 @@ def init_db():
     conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     c.execute('''CREATE TABLE IF NOT EXISTS rsvp
-                 (name text, attendance text, companion text, transport text, allergies text, message text)''')
+                 (name text, attendance text, companion text, transport text, allergies text, message text, song text)''')
     c.execute('''CREATE TABLE IF NOT EXISTS photos
                  (id text, filename text)''')
     c.execute('''CREATE TABLE IF NOT EXISTS settings

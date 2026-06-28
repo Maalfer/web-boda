@@ -1,0 +1,66 @@
+.transport-section {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+    position: relative;
+    overflow: hidden;
+}
+
+.transport-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.transport-card {
+    background-color: white;
+    border-radius: var(--radius-md);
+    box-shadow: 0 3px 12px rgba(163, 188, 153, 0.15);
+    border: 1px solid rgba(163, 188, 153, 0.1);
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+
+.transport-image {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    margin: 0 auto 1.75rem;
+}
+
+.transport-text {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.transport-text + .transport-text {
+    margin-top: 1.25rem;
+}
+
+.transport-text strong {
+    color: var(--color-primary-dark);
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .transport-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .transport-card {
+        padding: 2rem 1.25rem;
+    }
+
+    .transport-image {
+        max-width: 230px;
+        margin-bottom: 1.25rem;
+    }
+
+    .transport-text {
+        font-size: 1rem;
+    }
+}

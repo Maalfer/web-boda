@@ -13,8 +13,8 @@ def submit_rsvp(rsvp: RSVP):
     try:
         conn = get_connection()
         c = conn.cursor()
-        c.execute("INSERT INTO rsvp VALUES (?, ?, ?, ?, ?, ?)",
-                  (rsvp.name, rsvp.companion, rsvp.transport, rsvp.allergies, rsvp.song, rsvp.message))
+        c.execute("INSERT INTO rsvp (name, attendance, companion, transport, allergies, message) VALUES (?, ?, ?, ?, ?, ?)",
+                  (rsvp.name, rsvp.attendance, rsvp.companion, rsvp.transport, rsvp.allergies, rsvp.message))
         conn.commit()
         conn.close()
         return {"status": "success", "message": "RSVP received", "data": rsvp}

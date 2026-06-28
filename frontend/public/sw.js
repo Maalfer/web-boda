@@ -1,5 +1,5 @@
-const CACHE_NAME = 'wedding-app-v1';
-const STATIC_CACHE_NAME = 'wedding-static-v1';
+const CACHE_NAME = 'wedding-app-v6';
+const STATIC_CACHE_NAME = 'wedding-static-v6';
 
 const STATIC_ASSETS = [
   '/',

@@ -24,7 +24,7 @@ const CaptureLove = () => {
                 <div style={{ flex: '1 1 400px', textAlign: 'center' }}>
                     <h2 className="section-title">Captura el amor</h2>
                     <p style={{ maxWidth: '600px', margin: '1rem auto', fontFamily: 'var(--font-body)', fontSize: '1.1rem' }}>
-                        Nos encantaría ver nuestra boda a través de tus ojos. <br></br>Por favor, comparte tus fotos y vídeos accediendo al enlace que se encuentra a continuación.
+                        Nos encantaría ver nuestra boda a través de tus ojos. <br></br>Comparte tus fotos y vídeos directamente desde aquí. Haz clic en el botón y súbelas al instante.
                     </p>
                     <button
                         className="submit-btn"

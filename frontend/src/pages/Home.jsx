@@ -3,6 +3,7 @@ import Navbar from '../components/ui/Navbar';
 import Hero from '../components/sections/Hero';
 import Map from '../components/sections/Map';
 import Story from '../components/sections/Story';
+import Transport from '../components/sections/Transport';
 import CaptureLove from '../components/sections/CaptureLove';
 import FAQ from '../components/sections/FAQ';
 import DownloadInvitation from '../components/sections/DownloadInvitation';
@@ -21,6 +22,9 @@ const Home = () => {
             </ScrollReveal>
             <ScrollReveal>
                 <Story />
+            </ScrollReveal>
+            <ScrollReveal>
+                <Transport />
             </ScrollReveal>
             <ScrollReveal>
                 <FAQ />

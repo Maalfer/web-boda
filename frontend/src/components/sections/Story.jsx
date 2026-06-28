@@ -4,7 +4,7 @@ import Modal from '../ui/Modal';
 import { submitRsvp } from '../../services/api';
 import './Story.css';
 import './StoryForm.css';
-
+ 
 const Story = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({
@@ -15,20 +15,20 @@ const Story = () => {
         allergies: '',
         message: ''
     });
-
+ 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-
+ 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
-
+ 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+ 
         try {
             const payload = {
                 name: formData.name,
@@ -38,9 +38,9 @@ const Story = () => {
                 allergies: formData.allergies,
                 message: formData.message
             };
-
+ 
             const response = await submitRsvp(payload);
-
+ 
             if (response.ok) {
                 const duration = 5000;
                 const animationEnd = Date.now() + duration;
@@ -55,18 +55,18 @@ const Story = () => {
                     decay: 0.91,
                     shapes: ['circle']
                 };
-
+ 
                 const randomInRange = (min, max) => Math.random() * (max - min) + min;
-
+ 
                 const interval = setInterval(() => {
                     const timeLeft = animationEnd - Date.now();
-
+ 
                     if (timeLeft <= 0) {
                         return clearInterval(interval);
                     }
-
+ 
                     const particleCount = 80;
-
+ 
                     confetti({
                         ...defaults,
                         particleCount,
@@ -89,7 +89,7 @@ const Story = () => {
             alert('Error de conexión.');
         }
     };
-
+ 
     return (
         <section id="story" className="section story">
             <div className="container">
@@ -99,7 +99,7 @@ const Story = () => {
                         Contamos con vosotros para hacer este día aún más especial.
                     </p>
                     <button className="confirm-btn" style={{ marginTop: '1rem' }} onClick={openModal}>Confirmar asistencia</button>
-
+ 
                     <div style={{ marginTop: '2rem' }}>
                         <p style={{ marginBottom: '1rem', fontFamily: 'var(--font-handwriting)', fontSize: '1.5rem' }}>
                             Se ruega confirmación antes del 20 de julio.
@@ -121,7 +121,7 @@ const Story = () => {
                     </div>
                 </div>
             </div>
-
+ 
             <Modal isOpen={isModalOpen} onClose={closeModal} title="Confirmar asistencia">
                 <form className="rsvp-form-modal" onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -175,7 +175,7 @@ const Story = () => {
                             required
                         />
                     </div>
-
+ 
                     <div className="form-group">
                         <label htmlFor="allergies">¿Tienes alguna alergia, intolerancia o restricción alimentaria? Cuéntanoslo aquí para que disfrutes del banquete al 100% *</label>
                         <input
@@ -187,7 +187,7 @@ const Story = () => {
                             required
                         />
                     </div>
-
+ 
                     <div className="form-group">
                         <label htmlFor="transport">¿Necesitarás transporte? Habrá autobús disponible desde Avilés tanto para la ida como para la vuelta de la celebración *</label>
                         <div className="simple-radio-group">
@@ -233,5 +233,5 @@ const Story = () => {
         </section>
     );
 };
-
+ 
 export default Story;

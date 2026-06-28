@@ -10,6 +10,7 @@ const Photos = () => {
     const [selectedFiles, setSelectedFiles] = useState(null);
     const [uploading, setUploading] = useState(false);
     const [dragActive, setDragActive] = useState(false);
+    const [uploadMessage, setUploadMessage] = useState(null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -18,7 +19,6 @@ const Photos = () => {
 
     const fetchPhotos = async () => {
         const token = localStorage.getItem('token');
-
         try {
             const data = await getPhotos(token);
             if (data.status === 'success') {
@@ -36,9 +36,9 @@ const Photos = () => {
     const handleDrag = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        if (e.type === "dragenter" || e.type === "dragover") {
+        if (e.type === 'dragenter' || e.type === 'dragover') {
             setDragActive(true);
-        } else if (e.type === "dragleave") {
+        } else if (e.type === 'dragleave') {
             setDragActive(false);
         }
     };
@@ -49,16 +49,15 @@ const Photos = () => {
         setDragActive(false);
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
             setSelectedFiles(e.dataTransfer.files);
-            // Also need to set these files to the input for the form submission to work
-            // or modify handleUpload to use selectedFiles state directly, which it does.
         }
     };
 
     const handleUpload = async (e) => {
         e.preventDefault();
-        if (!selectedFiles) return;
+        if (!selectedFiles || selectedFiles.length === 0) return;
 
         setUploading(true);
+        setUploadMessage(null);
         const formData = new FormData();
         const newLocalPhotos = [];
 
@@ -66,29 +65,26 @@ const Photos = () => {
             formData.append('files', selectedFiles[i]);
             newLocalPhotos.push({
                 id: `local-${Date.now()}-${i}`,
-                url: URL.createObjectURL(selectedFiles[i])
+                url: URL.createObjectURL(selectedFiles[i]),
             });
         }
 
         try {
             const response = await uploadPhotos(formData);
-
             if (response.ok) {
-                alert('¡Fotos subidas con éxito!');
-
-                setLocalPhotos([...localPhotos, ...newLocalPhotos]);
+                setUploadMessage({ type: 'success', text: `¡${selectedFiles.length} foto${selectedFiles.length !== 1 ? 's' : ''} subida${selectedFiles.length !== 1 ? 's' : ''} con éxito! Gracias por compartir vuestros momentos.` });
+                setLocalPhotos(prev => [...prev, ...newLocalPhotos]);
                 setSelectedFiles(null);
-
                 const fileInput = document.getElementById('file-upload');
                 if (fileInput) fileInput.value = '';
-
                 fetchPhotos();
             } else {
-                alert('Error al subir las fotos.');
+                const data = await response.json().catch(() => ({}));
+                setUploadMessage({ type: 'error', text: data.detail || 'Error al subir las fotos. Inténtalo de nuevo.' });
             }
         } catch (error) {
             console.error('Error uploading:', error);
-            alert('Error de conexión.');
+            setUploadMessage({ type: 'error', text: 'Error de conexión. Comprueba tu internet e inténtalo de nuevo.' });
         } finally {
             setUploading(false);
         }
@@ -101,7 +97,6 @@ const Photos = () => {
             <Navbar />
 
             <main className="photos-content">
-                {/* Upload Section */}
                 <section className="upload-section">
                     <h2 className="upload-title">Sube tus recuerdos</h2>
                     <p className="upload-desc">Comparte tus fotos de la boda con nosotros. Arrastra y suelta tus imágenes o haz clic para seleccionar.</p>
@@ -141,13 +136,30 @@ const Photos = () => {
                             </div>
                         </div>
 
-                        <button type="submit" className="submit-btn" disabled={uploading} style={{ marginTop: '2rem' }}>
+                        {uploadMessage && (
+                            <div style={{
+                                marginTop: '1.5rem',
+                                padding: '1rem 1.5rem',
+                                borderRadius: '0.75rem',
+                                backgroundColor: uploadMessage.type === 'success' ? '#f0faf0' : '#fff0f0',
+                                border: `1px solid ${uploadMessage.type === 'success' ? '#a3bc99' : '#e57373'}`,
+                                color: uploadMessage.type === 'success' ? '#2e6b2e' : '#c62828',
+                                fontFamily: 'var(--font-body)',
+                                fontSize: '1rem',
+                                maxWidth: '700px',
+                                width: '100%',
+                                textAlign: 'center',
+                            }}>
+                                {uploadMessage.type === 'success' ? '💚 ' : '❌ '}{uploadMessage.text}
+                            </div>
+                        )}
+
+                        <button type="submit" className="submit-btn" disabled={uploading || !selectedFiles} style={{ marginTop: '2rem', opacity: (!selectedFiles) ? 0.6 : 1 }}>
                             {uploading ? 'Subiendo...' : 'Subir fotos'}
                         </button>
                     </form>
                 </section>
 
-                {/* Gallery Grid */}
                 <h2 className="gallery-title">Galería de momentos</h2>
 
                 {displayPhotos.length > 0 ? (
@@ -167,7 +179,7 @@ const Photos = () => {
                     </div>
                 ) : (
                     <div className="empty-state">
-                        <p>Aún no has subido fotos en esta sesión.</p>
+                        <p>Sé el primero en compartir un recuerdo de la boda.</p>
                     </div>
                 )}
             </main>

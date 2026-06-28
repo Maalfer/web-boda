@@ -63,6 +63,7 @@ const Navbar = () => {
                 <li><button onClick={() => handleNavigation('hero')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>Inicio</button></li>
                 <li><button onClick={() => handleNavigation('map')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>Lugar de celebración</button></li>
                 <li><button onClick={() => handleNavigation('story')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>Confirmar asistencia</button></li>
+                <li><button onClick={() => handleNavigation('transport')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>Transporte</button></li>
                 <li><button onClick={() => handleNavigation('faq')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>Preguntas frecuentes</button></li>
                 <li><button onClick={() => handleNavigation('photos')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>Captura el amor</button></li>
                 <li><button onClick={() => handleNavigation('invitation')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontSize: 'inherit' }}>Descarga tu invitación</button></li>

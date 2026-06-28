@@ -81,3 +81,7 @@ Thumbs.db
 *.tmp
 *.temp
 .cache/
+
+# Python caches anidados
+**/__pycache__/
+*.py[cod]
